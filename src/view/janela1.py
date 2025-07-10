@@ -46,7 +46,15 @@ class Janela1:
             lista_itens = []
             valor_total=0
             
-            a = str(input('Cadastrar pedido (y-Sim, n-Nao): '))
+            #novo codigo
+            while True:
+                a = str(input('Cadastrar pedido (y-Sim, n-Nao): ')).strip().lower()
+                if a in ('y','n'):
+                    break
+                print("Opção inválida! Digite 'y' para Sim ou 'n' para Nao")
+            
+            #antigo codigo
+            #a = str(input('Cadastrar pedido (y-Sim, n-Nao): '))
             
             if a=='y':
                 print('----------Cadastrar pedido----------\n')
@@ -65,8 +73,16 @@ class Janela1:
                     
                     for x in range(0,quantidade):#acrescentado o mesmo item várias vezes, de acordo com a quantidade
                         lista_itens.append((numero_pedido,item))
-                    
-                    adicionar = str(input('Adicionar novo item? (y-Sim, n-Nao): '))
+
+                    #novo codigo
+                    while True:
+                        a = str(input('Cadastrar pedido (y-Sim, n-Nao): ')).strip().lower()
+                        if a in ('y','n'):
+                            break
+                        print("Opção inválida! Digite 'y' para Sim ou 'n' para Nao")
+
+                    #antigo codigo
+                    #adicionar = str(input('Adicionar novo item? (y-Sim, n-Nao): '))
                 
                 print('\n----------Finalizar pedido----------\n')
                 print(f'Numero do pedido: {numero_pedido}')
