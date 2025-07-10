@@ -29,10 +29,19 @@ class Janela1:
         
         a = 'y'
         
-        menu = ItemControler.mostrar_itens_menu(database_name)
+        #novo script
+        #organização do menu de forma organizada e legível
+        itens_menu = ItemControler.mostrar_itens_menu(database_name)
         
-        print('----------Menu----------\n')
-        print(f'{menu} \n')
+        print('----- Menu de Itens Disponíveis -----')
+        for id_item, nome, preco, tipo, descricao in itens_menu:
+            print(f"{id_item}: {nome} ({tipo}) – R$ {preco:.2f} | {descricao}")
+        print()  # linha em branco antes de prosseguir
+
+        #script antigo
+        # print('----------Menu----------\n')
+        # print(f'{menu} \n')
+
         while a=='y':
             lista_itens = []
             valor_total=0
