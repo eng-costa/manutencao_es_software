@@ -76,8 +76,8 @@ class Janela1:
 
                     #novo codigo
                     while True:
-                        a = str(input('Cadastrar pedido (y-Sim, n-Nao): ')).strip().lower()
-                        if a in ('y','n'):
+                        adicionar = str(input('Adicionar novo item? (y-Sim, n-Nao): ')).strip().lower()
+                        if adicionar in ('y','n'):
                             break
                         print("Opção inválida! Digite 'y' para Sim ou 'n' para Nao")
 
