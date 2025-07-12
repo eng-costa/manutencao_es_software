@@ -16,9 +16,14 @@ class Janela3:
     def mostrar_janela3(database_name: str) -> None:
         print('------Cadastrar Novo Item no Menu------\n')
         
-        nome = input('Nome do item: ')
-        tipo = input('Tipo (ex: pizza, bebida): ')
-        descricao = input('Descrição: ')
+        nome = input('Nome do item: ').strip()
+        tipo = input('Tipo (ex: pizza, bebida): ').strip()
+        descricao = input('Descrição: ').strip()
+        
+        #adicionei código para validar dados
+        if not nome or not tipo or not descricao:
+            print('Todos os campos são obrigatórios. Operação cancelada.')
+            return
         
         try:
             preco = float(input('Preço (ex: 29.90): '))
