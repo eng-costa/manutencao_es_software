@@ -44,7 +44,7 @@ class Janela2:
             print(f'\nPedidos \n\n{exibir_tela}')
             print(f'Faturamento R$ {faturamento}')
         
-        elif q=='3':
+        elif q== 3:
             indice = int(input('Indice do pedido: '))
             resume = ItemControler.search_into_itens_pedidos_id(database_name, indice)
             quantidade_itens = len(resume)
@@ -59,10 +59,9 @@ class Janela2:
                 print('Informações do Pedido\n')
                 print(f'Status: {informacoes_pedido[1]}\nDelivery: {informacoes_pedido[2]}\nEndereco: {informacoes_pedido[3]}\nData: {informacoes_pedido[4]}\nR$ {informacoes_pedido[5]}')
                 novo_status = int(input('preparo - 1 | pronto - 2 | entregue - 3: '))
-                if novo_status/novo_status != 1:
+                if novo_status != 1 and novo_status != 2 and novo_status != 3:
                     print('Entrada inválida, retornando')
                     return
-                
                 status_map = {'1': 'preparo', '2': 'pronto', '3': 'entregue'}
                 status_str = status_map[novo_status]
                 result = PedidoControler.update_pedido_status_id(database_name, indice, status_str)
