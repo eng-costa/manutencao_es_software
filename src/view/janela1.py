@@ -46,47 +46,28 @@ class Janela1:
             lista_itens = []
             valor_total=0
             
-            #novo codigo
-            while True:
-                a = str(input('Cadastrar pedido (y-Sim, n-Nao): ')).strip().lower()
-                if a in ('y','n'):
-                    break
-                print("Opção inválida! Digite 'y' para Sim ou 'n' para Nao")
-            
-            #antigo codigo
-            #a = str(input('Cadastrar pedido (y-Sim, n-Nao): '))
+            a = str(input('Cadastrar pedido (y-Sim, n-Nao): '))
             
             if a=='y':
                 print('----------Cadastrar pedido----------\n')
                 adicionar = 'y'
                 pedidos = PedidoControler.search_in_pedidos_all(database_name)
                 numero_pedido = len(pedidos) + 1
-                #adicionando lista para correção #3
-                lista_itens = []
-                valor_total = 0
 
                 while adicionar == 'y':
-                    try: #adc try correção #3
-                        item = int(input('Numero do item: '))
-                        quantidade = int(input('Quantidade: '))
+                    item = int(input('Numero do item: '))
+                    quantidade = int(input('Quantidade: '))
                     
-                    except ValuerError: #3
-                        print("Entrada inválida! recomeçando cadastro do item.")
-                        continue
-
-                    valor_item = ItemControler.valor_item(database_name, item)
-                    if not valor_item:
-                        print("Item não encontrado.")
-                        continue
                     #calculando em tempo de execução o valor do pedido
-                    valor = valor_item[0][0]*quantidade #3
-                    print(f"Subtotal: R$ {valor:.2f}") #3
-                    valor_total += valor #3
+                    a = ItemControler.valor_item(database_name, item)
+                    b = a[0][0]*quantidade
+                    print(b)
+                    valor_total+=b
                     
                     for x in range(0,quantidade):#acrescentado o mesmo item várias vezes, de acordo com a quantidade
                         lista_itens.append((numero_pedido,item))
 
-                    while True:
+                    while True: #item3 
                         adicionar = input('Adicionar novo item? (y-Sim, n-Nao): ').strip().lower()
                         if adicionar in ('y', 'n'):
                             break

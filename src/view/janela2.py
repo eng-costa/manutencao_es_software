@@ -59,19 +59,16 @@ class Janela2:
                 print('Informações do Pedido\n')
                 print(f'Status: {informacoes_pedido[1]}\nDelivery: {informacoes_pedido[2]}\nEndereco: {informacoes_pedido[3]}\nData: {informacoes_pedido[4]}\nR$ {informacoes_pedido[5]}')
                 novo_status = int(input('preparo - 1 | pronto - 2 | entregue - 3: '))
-                if novo_status != 1 and novo_status != 2 and novo_status != 3:
+                if novo_status/novo_status != 1:
                     print('Entrada inválida, retornando')
-                    return
-                
-                status_map = {'1': 'preparo', '2': 'pronto', '3': 'entregue'}
-                status_str = status_map[novo_status]  # Só para mostrar no print
-
-                # CORREÇÃO: passar o número (int) para a função
-                result = PedidoControler.update_pedido_status_id(database_name, indice, int(novo_status))
-
-                if result:
-                   print(f'Status do Pedido {indice} atualizado com sucesso para "{status_str}".')
-
                 else:
-                    print('Erro ao atualizar')
-
+                    result = PedidoControler.update_pedido_status_id(database_name, indice, novo_status)
+                    if result:
+                        print(f'Status do Pedido {indice} atualizado com sucesso')
+                    else:
+                        print('Erro ao atualizar')
+            else:
+                print('Indice inválido')    
+        else:
+            print('Entrada inválida, retornando')
+            

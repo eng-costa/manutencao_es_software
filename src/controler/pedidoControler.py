@@ -61,34 +61,23 @@ class PedidoControler:
        return result
     
     @staticmethod
-    def update_pedido_status_id(database_name: str, indice: int, status) -> bool:
+    def update_pedido_status_id(database_name: str, indice:int, status: str) -> bool:
         """
-        Atualiza o status de um pedido pelo índice.
-    
-        :param database_name: nome do banco de dados
-        :param indice: id do pedido
-        :param status: status numérico (1, 2 ou 3)
-        :return: True se atualizado, False se erro
+        Atualiza status de um determinado pedido informado pelo indice
+        :param database_name: Nome do banco de dados (string).
+        :param indice: ID do pedido a ser buscado (int).
+        :param status: Novo estado do pedido a ser atualizado (int)
+        :return: Dados do pedido (list) ou código de erro (string).
         """
-        try:
-            # Converte status para inteiro, caso receba string
-            status_int = int(status)
-        except ValueError:
-            # Se não for possível converter, retorna falso
-            return False
-
-        # Mapeia o número para o texto do status
-        if status_int == 1:
-            status_str = 'preparo'
-        elif status_int == 2:
-            status_str = 'pronto'
-        elif status_int == 3:
-            status_str = 'entregue'
+        if status==1:
+            status = 'preparo'
+        elif status==2:
+            status = 'pronto'
+        elif status==3:
+            status = 'entregue'
         else:
             return False
-
-        # Chama a função que atualiza o banco, passando o status texto
-        result = Pedido.update_pedido_status(database_name, indice, status_str)
+        result = Pedido.update_pedido_status(database_name, indice, status)
         return result
     
     @staticmethod
