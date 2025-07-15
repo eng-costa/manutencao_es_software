@@ -87,7 +87,7 @@ class Janela1:
                 status_aux = int(input('status: 1-preparo, 2-pronto, 3-entregue: '))
                 if status_aux == 1:
                     status = 'preparo'
-                if status_aux == 2:
+                elif status_aux == 2:
                     status = 'pronto'
                 else:
                     status = 'entregue'
