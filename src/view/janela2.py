@@ -62,14 +62,16 @@ class Janela2:
                 if novo_status != 1 and novo_status != 2 and novo_status != 3:
                     print('Entrada inválida, retornando')
                     return
+                
                 status_map = {'1': 'preparo', '2': 'pronto', '3': 'entregue'}
-                status_str = status_map[novo_status]
-                result = PedidoControler.update_pedido_status_id(database_name, indice, status_str)
+                status_str = status_map[novo_status]  # Só para mostrar no print
+
+                # CORREÇÃO: passar o número (int) para a função
+                result = PedidoControler.update_pedido_status_id(database_name, indice, int(novo_status))
+
                 if result:
-                    print(f'Status do Pedido {indice} atualizado com sucesso para "{status_str}".')
+                   print(f'Status do Pedido {indice} atualizado com sucesso para "{status_str}".')
+
                 else:
                     print('Erro ao atualizar')
-            else:
-                print('Indice inválido')    
-        else:
-            print('Entrada inválida, retornando')
+
